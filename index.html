@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Envato Calculator</title>
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http:////netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script>
+
+		function calculate_e() {
+
+	    var value = document.getElementById('value_e').value;
+	    var bundle = document.getElementById('bundle_e').value;
+
+	    var total = 0;
+	    var income = 0;
+	    var breakpoint = 3750;
+	    var percentage = 50;
+
+	    while (total < value) {
+
+	        if (total == breakpoint) {
+	            if(percentage<70) {
+	            percentage = percentage + 1;
+	            }
+	            breakpoint = breakpoint + 3750;
+	        }
+	        
+	        total = total+1;
+	        income = income + bundle*(percentage/100);
+
+	    }
+
+	    // document.getElementById('result_e').innerHTML = '<div class="panel panel-default"><div class="panel-heading">Results</div><div class="panel-body"><p><strong>Your earnings:</strong> $'+income.toFixed(2)+'</p><p><strong>Porcentagem da envato:</strong> '+percentage+'%</p><p><strong>Envato commission:</strong> $'+((value*bundle)-income).toFixed(2)+'</p><p><strong>Total Amount: </strong>$'+(value*bundle).toFixed(2)+'</p></div></div>';
+	    document.getElementById('earnings_e').innerHTML = '$'+income.toFixed(2);
+	    document.getElementById('envato-percent_e').innerHTML = percentage+'%';
+	    document.getElementById('envato-comission_e').innerHTML = '$'+((value*bundle)-income).toFixed(2);
+	    document.getElementById('totalamount_e').innerHTML = '$'+(value*bundle).toFixed(2);
+	 
+	}
+	</script>
+	<style>
+		/*body{padding-top: 50px;} */
+		.jumbotron {background: #82b541; color: #fff;}
+	</style>
+</head>
+<body>
+	
+	<div class="jumbotron">
+		<div class="container">
+	        <!-- <h1>Hello, world! </h1> <--></-->
+	        <h1>Envato Calculator</h1>
+	        <p>Envato Calculator is a tool to help you calculate the earnings estimates on Envato.</p>
+		</div>
+    </div>
+	<div class="container">
+		
+			<h2>Quick and easy! <small>Just fill and press calculate.</small></h2><hr/>
+		
+		<div class="row">
+			<div class="col-sx-12 col-sm-6 col-md-6 col-lg-6">
+				<div class="panel panel-default">
+	  				<div class="panel-heading"><strong>Envato Calculator</strong></div>
+					<div class="panel-body">
+						<form role="form">
+							<div class="form-group">
+								<label for="value_e">Sales Volume</label>
+								<input type="number" class="form-control" id="value_e" placeholder="Sales Volume">
+							</div>
+							
+							<div class="form-group">
+
+								<label for="bundle_e">Item Value</label>	
+								<div class="input-group">
+									<span class="input-group-addon">$</span>
+									<input type="number" class="form-control" id="bundle_e" placeholder="Item Value">
+								</div>
+							</div>
+							
+							
+							
+							<a class="btn btn-success" onclick="calculate_e();">Calculate</a>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-sx-12 col-sm-6 col-md-6 col-lg-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">Results</div>
+					<div class="panel-body">
+						
+						<span id="result_e"></span>
+
+						<table class="table table-condensed">
+							
+							<tr>
+								<th>Total Amount</th>
+								<td><span id="totalamount_e"></span></td>
+							</tr>
+							<tr>
+								<th>Comission</th>
+								<td><span id="envato-percent_e"></span></td>
+							</tr>
+							<tr>
+								<th>Envato Earnings</th>
+								<td><span id="envato-comission_e"></span></td>
+							</tr>
+							<tr class="success">
+								<th>Your Earnings</th>
+								<td><span id="earnings_e"></span></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+
+		</div><!-- /row -->
+		<hr/>
+		<footer>
+			Develop by Hugo Medeiros and others contributors
+		</footer>
+	</div><!--/ container -->
+
+</body>
+</html>
