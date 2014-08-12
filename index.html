@@ -1,71 +1,126 @@
 <!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Envato-calculator by hugomedeiros</title>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Envato Calculator</title>
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http:////netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Envato-calculator</h1>
-        <p>Tool to help you calculate the earnings estimates on envato</p>
+		function calculate_e() {
 
-        <p class="view"><a href="https://github.com/hugomedeiros/envato-calculator">View the Project on GitHub <small>hugomedeiros/envato-calculator</small></a></p>
+	    var value = document.getElementById('value_e').value;
+	    var bundle = document.getElementById('bundle_e').value;
 
+	    var total = 0;
+	    var income = 0;
+	    var breakpoint = 3750;
+	    var percentage = 50;
 
-        <ul>
-          <li><a href="https://github.com/hugomedeiros/envato-calculator/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/hugomedeiros/envato-calculator/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/hugomedeiros/envato-calculator">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+	    while (total < value) {
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+	        if (total == breakpoint) {
+	            if(percentage<70) {
+	            percentage = percentage + 1;
+	            }
+	            breakpoint = breakpoint + 3750;
+	        }
+	        
+	        total = total+1;
+	        income = income + bundle*(percentage/100);
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+	    }
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/hugomedeiros">hugomedeiros</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
+	    // document.getElementById('result_e').innerHTML = '<div class="panel panel-default"><div class="panel-heading">Results</div><div class="panel-body"><p><strong>Your earnings:</strong> $'+income.toFixed(2)+'</p><p><strong>Porcentagem da envato:</strong> '+percentage+'%</p><p><strong>Envato commission:</strong> $'+((value*bundle)-income).toFixed(2)+'</p><p><strong>Total Amount: </strong>$'+(value*bundle).toFixed(2)+'</p></div></div>';
+	    document.getElementById('earnings_e').innerHTML = '$'+income.toFixed(2);
+	    document.getElementById('envato-percent_e').innerHTML = percentage+'%';
+	    document.getElementById('envato-comission_e').innerHTML = '$'+((value*bundle)-income).toFixed(2);
+	    document.getElementById('totalamount_e').innerHTML = '$'+(value*bundle).toFixed(2);
+	 
+	}
+	</script>
+	<style>
+		/*body{padding-top: 50px;} */
+		.jumbotron {background: #82b541; color: #fff;}
+	</style>
+</head>
+<body>
+	
+	<div class="jumbotron">
+		<div class="container">
+	        <!-- <h1>Hello, world! </h1> <--></-->
+	        <h1>Envato Calculator</h1>
+	        <p>Envato Calculator is a tool to help you calculate the earnings estimates on Envato.</p>
+		</div>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+	<div class="container">
+		
+			<h2>Quick and easy! <small>Just fill and press calculate.</small></h2><hr/>
+		
+		<div class="row">
+			<div class="col-sx-12 col-sm-6 col-md-6 col-lg-6">
+				<div class="panel panel-default">
+	  				<div class="panel-heading"><strong>Envato Calculator</strong></div>
+					<div class="panel-body">
+						<form role="form">
+							<div class="form-group">
+								<label for="value_e">Sales Volume</label>
+								<input type="number" class="form-control" id="value_e" placeholder="Sales Volume">
+							</div>
+							
+							<div class="form-group">
+
+								<label for="bundle_e">Item Value</label>	
+								<div class="input-group">
+									<span class="input-group-addon">$</span>
+									<input type="number" class="form-control" id="bundle_e" placeholder="Item Value">
+								</div>
+							</div>
+							
+							
+							
+							<a class="btn btn-success" onclick="calculate_e();">Calculate</a>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-sx-12 col-sm-6 col-md-6 col-lg-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">Results</div>
+					<div class="panel-body">
+						
+						<span id="result_e"></span>
+
+						<table class="table table-condensed">
+							
+							<tr>
+								<th>Total Amount</th>
+								<td><span id="totalamount_e"></span></td>
+							</tr>
+							<tr>
+								<th>Comission</th>
+								<td><span id="envato-percent_e"></span></td>
+							</tr>
+							<tr>
+								<th>Envato Earnings</th>
+								<td><span id="envato-comission_e"></span></td>
+							</tr>
+							<tr class="success">
+								<th>Your Earnings</th>
+								<td><span id="earnings_e"></span></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+
+		</div><!-- /row -->
+		<hr/>
+		<footer>
+			Develop by Hugo Medeiros and others contributors
+		</footer>
+	</div><!--/ container -->
+
+</body>
 </html>
